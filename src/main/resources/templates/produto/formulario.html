@@ -1,0 +1,64 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<title>EasyBill - Formulário de Produto</title>
+<body>
+<div th:replace="~{base :: logo}"></div>
+<div class="container">
+    <div th:replace="~{base :: titulo('Novo Produto')}"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary-subtle d-flex justify-content-between mb-3">
+        <div class="mx-2">
+            <a href="/home">
+                <button class="btn btn-outline-danger ml-2">Voltar para o menu</button>
+            </a>
+        </div>
+    </nav>
+    <div class="card mt-3">
+        <form th:object="${dadosNovoProduto}" class="card-body" action="/admin/produtos" method="POST">
+            <div class="form-group mb-3">
+                <label for="nomeProduto">Produto</label>
+                <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do Produto"/>
+                <small>Informe o nome do produto</small>
+                <div class="invalid-feedback" th:errors="*{nomeProduto}">
+                    Erros do nome do produto
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="preco">Preço</label>
+                <input th:field="*{preco}" th:errorclass="is-invalid" class="form-control" placeholder="Preço do Produto"/>
+                <small>Informe o preço do produto</small>
+                <div class="invalid-feedback" th:errors="*{preco}">
+                    Erros do nome do produto
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="precoPromocional">Preço Promocional</label>
+                <input th:field="*{precoPromocional}" class="form-control" placeholder="Preço Promocional"/>
+                <small>Caso houver, informe o preço promocional do produto</small>
+            </div>
+            <div class="form-group mb-3">
+                <label for="classeFiscal">Classe Fiscal</label>
+                <input th:field="*{classeFiscal}" th:errorclass="is-invalid" class="form-control" placeholder="Classe Fiscal do Produto"/>
+                <small>Informe a classe do produto seguindo o padrão: 9999.99.99</small>
+                <div class="invalid-feedback" th:errors="*{classeFiscal}">
+                    Erros do nome do produto
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="descricao">Descrição</label>
+                <textarea th:field="*{descricao}" class="form-control" placeholder="Descrição do Produto"></textarea>
+                <small>Informe a descrição do produto</small>
+            </div>
+            <div class="form-group mb-3">
+                <label for="urlImagem">URL da Imagem</label>
+                <input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="URL da Imagem do Produto"/>
+                <small>Informe a URl da imagem do produto</small>
+                <div class="invalid-feedback" th:errors="*{urlImagem}">
+                    Erros do nome do produto
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

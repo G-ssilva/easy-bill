@@ -1,0 +1,48 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<title>EasyBill - Meus Produtos</title>
+<body>
+<div th:replace="~{base :: logo}"></div>
+<div class="container">
+    <div th:replace="~{base :: titulo('Meus Produtos')}"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary-subtle d-flex justify-content-between mb-3">
+        <div class="mx-2">
+            <a href="">
+                <button class="btn btn-outline-success ml-2">Encerrar pedido</button>
+            </a>
+        </div>
+        <div class="mx-2">
+            <a href="/admin/produtos/formulario">
+                <button class="btn btn-outline-primary my-2 my-sm-0">Cadastrar produto</button>
+            </a>
+        </div>
+    </nav>
+    <div class="card mb-3" th:each="produto : ${produtos}">
+        <div class="card-header" th:text="${produto.nome}">Nome do Produto</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-8 mb-3">
+                    <div class="row">
+                        <div class="col-md-3">Valor: R$<span th:text="${produto.preco}">200,99</span></div>
+                        <div class="col-md-9">Valor Promocional: R$<span
+                                th:text="${produto.precoPromocional}">200,00</span></div>
+                    </div>
+                    <div>Classe Fiscal: <span th:text="${produto.classeFiscal}">Classe Fiscal</span></div>
+
+                    <div>Descrição</div>
+                    <div>
+                        <textarea class="form-control px-1"
+                                  th:text="${produto.descricao}">Descrição do produto</textarea>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div>
+                        <img class="img-thumbnail height: 1.5rem" th:src="${produto.urlImagem}" src=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

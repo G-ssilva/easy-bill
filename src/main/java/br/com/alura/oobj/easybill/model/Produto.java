@@ -1,0 +1,116 @@
+package br.com.alura.oobj.easybill.model;
+
+import br.com.alura.oobj.easybill.dto.DadosNovoProduto;
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.math.BigDecimal;
+
+@Entity
+public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Size(max = 150)
+    private String nome;
+
+    @NotNull
+    @Size(max = 500)
+    private String urlImagem;
+
+    @Size(max = 1000)
+    private String descricao;
+
+    @NotNull
+    private BigDecimal preco;
+    private BigDecimal precoPromocional;
+
+    @NotNull
+    @Size(min = 10, max = 10)
+    private String classeFiscal;
+
+    @ManyToOne
+    @Valid
+    private ClasseFiscal classeFiscalCompleta;
+
+    public Produto() {
+    }
+
+    public Produto(@NotNull String nome, @NotNull String urlImagem, String descricao, @NotNull BigDecimal preco, BigDecimal precoPromocional, @NotNull String classeFiscal) {
+        this.nome = nome;
+        this.urlImagem = urlImagem;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.precoPromocional = precoPromocional;
+        this.classeFiscal = classeFiscal;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public BigDecimal getPrecoPromocional() {
+        return precoPromocional;
+    }
+
+    public void setPrecoPromocional(BigDecimal precoPromocional) {
+        this.precoPromocional = precoPromocional;
+    }
+
+    public String getClasseFiscal() {
+        return classeFiscal;
+    }
+
+    public void setClasseFiscal(String classeFiscal) {
+        this.classeFiscal = classeFiscal;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void atualizarInformacoes(Produto produtoModificado) {
+        this.nome = produtoModificado.getNome();
+        this.urlImagem = produtoModificado.getUrlImagem();
+        this.descricao = produtoModificado.getDescricao();
+        this.preco = produtoModificado.getPreco();
+        this.precoPromocional = produtoModificado.getPrecoPromocional();
+        this.classeFiscal = produtoModificado.getClasseFiscal();
+    }
+}
