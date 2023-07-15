@@ -1,11 +1,9 @@
-package br.com.alura.oobj.easybill.dto;
+package br.com.alura.oobj.easybill.classe_fiscal.dto;
 
-import br.com.alura.oobj.easybill.model.ClasseFiscal;
+import br.com.alura.oobj.easybill.classe_fiscal.model.ClasseFiscal;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
-import static java.util.regex.Pattern.matches;
 
 public class DadosNovaClasseFiscal {
     @NotBlank

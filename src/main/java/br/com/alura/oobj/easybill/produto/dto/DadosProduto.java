@@ -1,6 +1,6 @@
-package br.com.alura.oobj.easybill.dto;
+package br.com.alura.oobj.easybill.produto.dto;
 
-import br.com.alura.oobj.easybill.model.Produto;
+import br.com.alura.oobj.easybill.produto.model.Produto;
 
 import java.math.BigDecimal;
 

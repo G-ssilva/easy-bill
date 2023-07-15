@@ -1,8 +1,8 @@
-package br.com.alura.oobj.easybill.controller;
+package br.com.alura.oobj.easybill.produto.controller;
 
-import br.com.alura.oobj.easybill.dto.DadosNovoProduto;
-import br.com.alura.oobj.easybill.model.Produto;
-import br.com.alura.oobj.easybill.repository.ProdutoRepository;
+import br.com.alura.oobj.easybill.produto.dto.DadosNovoProduto;
+import br.com.alura.oobj.easybill.produto.model.Produto;
+import br.com.alura.oobj.easybill.produto.repository.ProdutoRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package br.com.alura.oobj.easybill.model;
+package br.com.alura.oobj.easybill.produto.model;
 
-import br.com.alura.oobj.easybill.dto.DadosNovoProduto;
+import br.com.alura.oobj.easybill.classe_fiscal.model.ClasseFiscal;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -33,20 +33,22 @@ public class Produto {
     @Size(min = 10, max = 10)
     private String classeFiscal;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @Valid
     private ClasseFiscal classeFiscalCompleta;
 
     public Produto() {
     }
 
-    public Produto(@NotNull String nome, @NotNull String urlImagem, String descricao, @NotNull BigDecimal preco, BigDecimal precoPromocional, @NotNull String classeFiscal) {
+    public Produto(Long id, @NotNull String nome, @NotNull String urlImagem, String descricao, @NotNull BigDecimal preco, BigDecimal precoPromocional, @NotNull String classeFiscal, ClasseFiscal classeFiscalCompleta) {
+        this.id = id;
         this.nome = nome;
         this.urlImagem = urlImagem;
         this.descricao = descricao;
         this.preco = preco;
         this.precoPromocional = precoPromocional;
         this.classeFiscal = classeFiscal;
+        this.classeFiscalCompleta = classeFiscalCompleta;
     }
 
     public String getNome() {
@@ -103,6 +105,14 @@ public class Produto {
 
     public Long getId() {
         return id;
+    }
+
+    public ClasseFiscal getClasseFiscalCompleta() {
+        return classeFiscalCompleta;
+    }
+
+    public void setClasseFiscalCompleta(ClasseFiscal classeFiscalCompleta) {
+        this.classeFiscalCompleta = classeFiscalCompleta;
     }
 
     public void atualizarInformacoes(Produto produtoModificado) {

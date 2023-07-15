@@ -1,14 +1,12 @@
-package br.com.alura.oobj.easybill.dto;
+package br.com.alura.oobj.easybill.produto.dto;
 
-import br.com.alura.oobj.easybill.model.Produto;
+import br.com.alura.oobj.easybill.produto.model.Produto;
 import io.micrometer.common.util.StringUtils;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
-
-import static java.util.regex.Pattern.matches;
 
 public class DadosNovoProduto {
     @NotBlank

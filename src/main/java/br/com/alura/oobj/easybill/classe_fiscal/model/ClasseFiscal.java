@@ -1,4 +1,4 @@
-package br.com.alura.oobj.easybill.model;
+package br.com.alura.oobj.easybill.classe_fiscal.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

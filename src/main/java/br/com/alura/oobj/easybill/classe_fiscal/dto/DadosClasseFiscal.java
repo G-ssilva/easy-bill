@@ -1,8 +1,6 @@
-package br.com.alura.oobj.easybill.dto;
+package br.com.alura.oobj.easybill.classe_fiscal.dto;
 
-import br.com.alura.oobj.easybill.model.ClasseFiscal;
-
-import java.math.BigDecimal;
+import br.com.alura.oobj.easybill.classe_fiscal.model.ClasseFiscal;
 
 public class DadosClasseFiscal {
     private long id;

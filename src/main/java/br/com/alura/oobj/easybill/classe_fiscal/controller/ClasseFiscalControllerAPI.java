@@ -1,9 +1,9 @@
-package br.com.alura.oobj.easybill.controller;
+package br.com.alura.oobj.easybill.classe_fiscal.controller;
 
-import br.com.alura.oobj.easybill.dto.DadosClasseFiscal;
-import br.com.alura.oobj.easybill.dto.DadosNovaClasseFiscal;
-import br.com.alura.oobj.easybill.model.ClasseFiscal;
-import br.com.alura.oobj.easybill.repository.ClasseFiscalRepository;
+import br.com.alura.oobj.easybill.classe_fiscal.dto.DadosClasseFiscal;
+import br.com.alura.oobj.easybill.classe_fiscal.dto.DadosNovaClasseFiscal;
+import br.com.alura.oobj.easybill.classe_fiscal.model.ClasseFiscal;
+import br.com.alura.oobj.easybill.classe_fiscal.repository.ClasseFiscalRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

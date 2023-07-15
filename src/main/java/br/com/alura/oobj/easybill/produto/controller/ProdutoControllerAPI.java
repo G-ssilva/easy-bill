@@ -1,12 +1,17 @@
-package br.com.alura.oobj.easybill.controller;
+package br.com.alura.oobj.easybill.produto.controller;
 
-import br.com.alura.oobj.easybill.dto.DadosProduto;
-import br.com.alura.oobj.easybill.dto.DadosNovoProduto;
-import br.com.alura.oobj.easybill.model.Produto;
-import br.com.alura.oobj.easybill.repository.ProdutoRepository;
+import br.com.alura.oobj.easybill.produto.dto.DadosProduto;
+import br.com.alura.oobj.easybill.produto.dto.DadosNovoProduto;
+import br.com.alura.oobj.easybill.produto.dto.DadosProdutoPaginado;
+import br.com.alura.oobj.easybill.produto.model.Produto;
+import br.com.alura.oobj.easybill.produto.repository.ProdutoRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -23,8 +28,23 @@ public class ProdutoControllerAPI {
     private ProdutoRepository repository;
 
     @GetMapping("produtos")
-    public List<DadosProduto> listar(){
-        return repository.findAll().stream().map(DadosProduto::new).toList();
+    public DadosProdutoPaginado listarPorPaginacaoOrdenacao(@RequestParam("pagina") Optional<Integer> pagina){
+        if(pagina.isEmpty()){
+            pagina = Optional.of(0);
+        }
+        int numeroPagina = pagina.get();
+
+        Pageable pageable = PageRequest.of(numeroPagina, 3, Sort.by(Sort.Direction.ASC,"nome"));
+        Page<Produto> dadosProdutoPage = repository.findAll(pageable);
+
+        List<DadosProduto> dadosProdutos = dadosProdutoPage.stream().map(DadosProduto::new).toList();
+        DadosProdutoPaginado dadosProdutoPaginado = new DadosProdutoPaginado(dadosProdutos);
+
+        dadosProdutoPaginado.setPaginaAtual(dadosProdutoPage.getNumber());
+        dadosProdutoPaginado.setTotalElementos(dadosProdutoPage.getTotalElements());
+        dadosProdutoPaginado.setPaginasTotais(dadosProdutoPage.getTotalPages() - 1);
+
+        return dadosProdutoPaginado;
     }
 
     @GetMapping("produtos/{id}")
