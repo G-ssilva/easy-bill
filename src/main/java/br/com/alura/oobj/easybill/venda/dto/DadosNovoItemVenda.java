@@ -25,6 +25,15 @@ public class DadosNovoItemVenda {
     @NotNull
     private long produtoId;
 
+    public DadosNovoItemVenda(int quantidade, String observacao, long produtoId) {
+        this.quantidade = quantidade;
+        this.observacao = observacao;
+        this.produtoId = produtoId;
+    }
+
+    public DadosNovoItemVenda() {
+    }
+
     public List<ItemVenda> toItemDelegado(Venda venda, ProdutoRepository produtoRepository, @NotNull List<DadosNovoItemVenda> itens) {
         List<ItemVenda> itensVenda = new ArrayList<>();
 

@@ -2,7 +2,6 @@ package br.com.alura.oobj.easybill.venda.model;
 
 import br.com.alura.oobj.easybill.cliente.model.Cliente;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
@@ -24,8 +23,7 @@ public class Venda {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
-    public Venda(long id, @NotNull LocalDateTime dataHoraVenda, @NotNull Status status, @NotNull Cliente cliente) {
-        this.id = id;
+    public Venda(@NotNull LocalDateTime dataHoraVenda, @NotNull Status status, @NotNull Cliente cliente) {
         this.dataHoraVenda = dataHoraVenda;
         this.status = status;
         this.cliente = cliente;

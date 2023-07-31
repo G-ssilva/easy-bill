@@ -4,6 +4,7 @@ import br.com.alura.oobj.easybill.cliente.dto.DadosCliente;
 import br.com.alura.oobj.easybill.cliente.dto.DadosNovoCliente;
 import br.com.alura.oobj.easybill.cliente.model.Cliente;
 import br.com.alura.oobj.easybill.cliente.repository.ClienteRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class ClienteControllerAPI {
     private ClienteRepository repository;
 
     @GetMapping("admin/clientes")
+    @SecurityRequirement(name = "bearer-key")
     public List<DadosCliente> listar(@RequestParam("estado") Optional<String> estado){
         if(estado.isEmpty()){
             return repository.findAll().stream().map(DadosCliente::new).toList();

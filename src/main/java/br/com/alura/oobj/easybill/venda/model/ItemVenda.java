@@ -34,8 +34,7 @@ public class ItemVenda {
     @ManyToOne(fetch = FetchType.LAZY)
     private Produto produto;
 
-    public ItemVenda(long id, @NotNull int quantidade, String observacao, @NotNull BigDecimal precoUnitario, BigDecimal precoUnitarioPromocional, @NotNull Venda venda, @NotNull Produto produto) {
-        this.id = id;
+    public ItemVenda(@NotNull int quantidade, String observacao, @NotNull BigDecimal precoUnitario, BigDecimal precoUnitarioPromocional, @NotNull Venda venda, @NotNull Produto produto) {
         this.quantidade = quantidade;
         this.observacao = observacao;
         this.precoUnitario = precoUnitario;

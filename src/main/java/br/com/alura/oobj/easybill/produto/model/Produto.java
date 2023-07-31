@@ -40,8 +40,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(Long id, @NotNull String nome, @NotNull String urlImagem, String descricao, @NotNull BigDecimal preco, BigDecimal precoPromocional, @NotNull String classeFiscal, ClasseFiscal classeFiscalCompleta) {
-        this.id = id;
+    public Produto(@NotNull String nome, @NotNull String urlImagem, String descricao, @NotNull BigDecimal preco, BigDecimal precoPromocional, @NotNull String classeFiscal, ClasseFiscal classeFiscalCompleta) {
         this.nome = nome;
         this.urlImagem = urlImagem;
         this.descricao = descricao;

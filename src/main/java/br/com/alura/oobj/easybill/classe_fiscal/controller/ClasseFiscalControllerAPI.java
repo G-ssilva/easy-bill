@@ -4,6 +4,7 @@ import br.com.alura.oobj.easybill.classe_fiscal.dto.DadosClasseFiscal;
 import br.com.alura.oobj.easybill.classe_fiscal.dto.DadosNovaClasseFiscal;
 import br.com.alura.oobj.easybill.classe_fiscal.model.ClasseFiscal;
 import br.com.alura.oobj.easybill.classe_fiscal.repository.ClasseFiscalRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/admin/classes-fiscais")
+@SecurityRequirement(name = "bearer-key")
 public class ClasseFiscalControllerAPI {
 
     @Autowired

@@ -29,8 +29,7 @@ public class Cliente {
     private Endereco endereco;
 
 
-    public Cliente(long id, String nome, String cpf, String telefone, String email, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
-        this.id = id;
+    public Cliente(String nome, String cpf, String telefone, String email, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;

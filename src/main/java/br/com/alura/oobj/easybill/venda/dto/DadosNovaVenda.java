@@ -7,15 +7,21 @@ import br.com.alura.oobj.easybill.venda.model.Venda;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DadosNovaVenda {
-    @NotNull
     private long clienteId;
 
     @NotNull
-    private List<DadosNovoItemVenda> itens;
+    private List<DadosNovoItemVenda> itens = null;
+
+    public DadosNovaVenda(long clienteId, @NotNull List<DadosNovoItemVenda> itens) {
+        this.clienteId = clienteId;
+        this.itens = itens;
+    }
+
+    public DadosNovaVenda() {
+    }
 
     public Venda toVenda(){
         Venda venda = new Venda();
